@@ -7,7 +7,7 @@ import static org.testng.Assert.*;
 /**
  * Created by jeff on 14/05/16.
  */
-public class StableBloomFilterTest {
+public class BloomFilterTest {
 
     private BloomFilter<String> filter;
 
@@ -16,7 +16,7 @@ public class StableBloomFilterTest {
         int numberOfCells = 100;
         int numberOfHashes = 3;
         float unlearnRate = 0.0f;
-        this.filter = new StableBloomFilter<String>(
+        this.filter = new StableBloomFilter<>(
                 numberOfCells,
                 numberOfHashes,
                 unlearnRate);

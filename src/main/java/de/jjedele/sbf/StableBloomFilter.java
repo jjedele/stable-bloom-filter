@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by jeff on 14/05/16.
  */
-public class StableBloomFilter<E> implements BloomFilter<E> {
+public class StableBloomFilter<E> implements CountingBloomFilter<E> {
 
     private HashProvider<Object> hashProvider = new DefaultHashProvider();
 
@@ -31,6 +31,14 @@ public class StableBloomFilter<E> implements BloomFilter<E> {
         }
 
         unlearn();
+    }
+
+    public void remove(E element) {
+        int[] indices = indices(element);
+
+        for (int i = 0; i < numberOfHashes; i++) {
+            decrement(indices[i]);
+        }
     }
 
     public boolean mayContain(E element) {
