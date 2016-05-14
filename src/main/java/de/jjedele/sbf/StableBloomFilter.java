@@ -27,7 +27,7 @@ public class StableBloomFilter<E> implements BloomFilter<E> {
         int[] indices = indices(element);
 
         for (int i = 0; i < numberOfHashes; i++) {
-            cells[indices[i]] += 1;
+            increment(indices[i]);
         }
 
         unlearn();
@@ -38,7 +38,7 @@ public class StableBloomFilter<E> implements BloomFilter<E> {
 
         int[] indices = indices(element);
         for (int i = 0; i < numberOfHashes; i++) {
-            mayContain &= cells[indices[i]] > 0;
+            mayContain &= isSet(indices[i]);
         }
 
         return mayContain;
@@ -48,7 +48,7 @@ public class StableBloomFilter<E> implements BloomFilter<E> {
         int unlearnedCells = Math.round(numberOfCells * unlearnRate);
         for (int i = 0; i < unlearnedCells; i++) {
             int index = new Random().nextInt(numberOfCells);
-            this.cells[index] -= 1;
+            decrement(index);
         }
     }
 
@@ -62,6 +62,22 @@ public class StableBloomFilter<E> implements BloomFilter<E> {
         }
 
         return hashes;
+    }
+
+    private void decrement(int idx) {
+        if (cells[idx] > 0) {
+            cells[idx] -= 1;
+        }
+    }
+
+    private void increment(int idx) {
+        if (cells[idx] < Byte.MAX_VALUE) {
+            cells[idx] += 1;
+        }
+    }
+
+    private boolean isSet(int idx) {
+        return cells[idx] > 0;
     }
 
 }
