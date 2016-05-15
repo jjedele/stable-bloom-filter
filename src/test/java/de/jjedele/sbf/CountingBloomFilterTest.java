@@ -13,13 +13,7 @@ public class CountingBloomFilterTest {
 
     @BeforeTest
     public void before() {
-        int numberOfCells = 100;
-        int numberOfHashes = 3;
-        float unlearnRate = 0.0f;
-        this.filter = new StableBloomFilter<>(
-                numberOfCells,
-                numberOfHashes,
-                unlearnRate);
+        this.filter = BloomFilterBuilder.get().buildCountingFilter();
     }
 
     @Test
