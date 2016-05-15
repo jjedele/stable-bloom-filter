@@ -17,7 +17,7 @@ public class BloomFilterBuilder<E> {
     }
 
     public BloomFilterBuilder withSize(int size) {
-        this.size = 1000;
+        this.size = size;
         return this;
     }
 
