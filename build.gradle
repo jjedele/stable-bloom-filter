@@ -8,7 +8,8 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+    testCompile 'org.testng:testng:6.9.10'
+    testCompile 'org.apache.commons:commons-lang3:3.4'
 }
 
 test {

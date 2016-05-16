@@ -8,7 +8,7 @@ public class BloomFilterBuilder<E> {
     private int size = 1000;
     private int numberOfHashes = 3;
     private static float NO_UNLEARNING_RATE = 0.0f;
-    private float unlearningRate = 0.0f;
+    private float unlearningRate = 0.0005f;
 
     private BloomFilterBuilder() {}
 
