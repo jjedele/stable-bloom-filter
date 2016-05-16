@@ -20,8 +20,8 @@ BloomFilter<String> filter = BloomFilterBuilder.get().buildFilter();
 
 filter.add("foo");
 
-assert filter.mayContain("foo");
-assert !filter.mayContain("bar");
+assert filter.mightContain("foo");
+assert !filter.mightContain("bar");
 ```
 
 ### Counting Bloom Filter
@@ -33,8 +33,8 @@ filter.add("foo");
 filter.add("bar");
 filter.remove("foo");
 
-assert !filter.mayContain("foo");
-assert filter.mayContain("bar");
+assert !filter.mightContain("foo");
+assert filter.mightContain("bar");
 ```
 
 ## References
