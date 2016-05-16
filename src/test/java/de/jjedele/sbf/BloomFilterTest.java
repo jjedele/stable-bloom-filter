@@ -21,7 +21,7 @@ public class BloomFilterTest {
         String string = "somestr";
 
         filter.add(string);
-        boolean isContained = filter.mayContain(string);
+        boolean isContained = filter.mightContain(string);
 
         assertTrue(isContained);
     }
@@ -35,7 +35,7 @@ public class BloomFilterTest {
         assertNotEquals(string1, string2);
 
         filter.add(string1);
-        boolean isStr2Contained = filter.mayContain(string2);
+        boolean isStr2Contained = filter.mightContain(string2);
 
         assertFalse(isStr2Contained);
     }

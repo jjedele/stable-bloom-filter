@@ -2,7 +2,6 @@ package de.jjedele.sbf.quantitative;
 
 import de.jjedele.sbf.BloomFilter;
 import de.jjedele.sbf.BloomFilterBuilder;
-import de.jjedele.sbf.hashing.StringHashProvider;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 
@@ -29,10 +28,10 @@ public class FalsePositiveRateTest {
             containedStrings.forEach(filter::add);
 
             long truePositives = containedStrings.stream()
-                    .filter(filter::mayContain)
+                    .filter(filter::mightContain)
                     .count();
             long trueNegatives = nonContainedStrings.stream()
-                    .filter(string -> !filter.mayContain(string))
+                    .filter(string -> !filter.mightContain(string))
                     .count();
             double falsePositiveRate = 100.0 * (batchSize - trueNegatives) / batchSize;
             double falseNegativeRate = 100.0 * (batchSize - truePositives) / batchSize;

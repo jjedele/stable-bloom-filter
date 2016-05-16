@@ -45,15 +45,15 @@ public class StableBloomFilter<E> implements CountingBloomFilter<E> {
         }
     }
 
-    public boolean mayContain(E element) {
-        boolean mayContain = true;
+    public boolean mightContain(E element) {
+        boolean mightContain = true;
 
         int[] indices = indices(element);
         for (int i = 0; i < numberOfHashes; i++) {
-            mayContain &= isSet(indices[i]);
+            mightContain &= isSet(indices[i]);
         }
 
-        return mayContain;
+        return mightContain;
     }
 
     private void unlearn() {

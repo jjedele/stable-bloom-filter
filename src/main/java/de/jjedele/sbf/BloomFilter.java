@@ -7,6 +7,6 @@ public interface BloomFilter<E extends Object> {
 
     void add(E element);
 
-    boolean mayContain(E element);
+    boolean mightContain(E element);
 
 }

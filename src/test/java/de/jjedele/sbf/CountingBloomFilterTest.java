@@ -23,7 +23,7 @@ public class CountingBloomFilterTest {
         filter.add(string);
         filter.remove(string);
 
-        boolean containsString = filter.mayContain(string);
+        boolean containsString = filter.mightContain(string);
         assertFalse(containsString);
     }
 
