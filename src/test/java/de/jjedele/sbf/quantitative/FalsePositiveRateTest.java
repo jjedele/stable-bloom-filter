@@ -2,6 +2,7 @@ package de.jjedele.sbf.quantitative;
 
 import de.jjedele.sbf.BloomFilter;
 import de.jjedele.sbf.BloomFilterBuilder;
+import de.jjedele.sbf.hashing.StringHashProvider;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 

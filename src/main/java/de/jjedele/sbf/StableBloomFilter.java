@@ -1,5 +1,8 @@
 package de.jjedele.sbf;
 
+import de.jjedele.sbf.hashing.DefaultHashProvider;
+import de.jjedele.sbf.hashing.HashProvider;
+
 import java.util.Random;
 
 /**
@@ -7,8 +10,7 @@ import java.util.Random;
  */
 public class StableBloomFilter<E> implements CountingBloomFilter<E> {
 
-    private HashProvider<Object> hashProvider = new DefaultHashProvider();
-
+    private final HashProvider<E> hashProvider;
     private final byte[] cells;
     private final int numberOfCells;
     private final int numberOfHashes;
@@ -16,11 +18,13 @@ public class StableBloomFilter<E> implements CountingBloomFilter<E> {
 
     public StableBloomFilter(int numberOfCells,
                              int numberOfHashes,
-                             float unlearnRate) {
+                             float unlearnRate,
+                             HashProvider<E> hashProvider) {
         this.numberOfCells = numberOfCells;
         this.numberOfHashes = numberOfHashes;
         this.cells = new byte[numberOfCells];
         this.unlearnRate = unlearnRate;
+        this.hashProvider = hashProvider;
     }
 
     public void add(E element) {
