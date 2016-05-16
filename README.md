@@ -14,8 +14,7 @@ The Bloom Filter is a compromise working on a limited amount of memory, therefor
 ### Stable Bloom Filters
 
 The false positive rate (*FPR*) for a Bloom Filter is given
-by:
-![FPR = (1-p)^; (1 - 1/m)^(KN)](http://www.sciweavers.org/tex2img.php?eq=FPR%20%3D%20%281%20-%20p%29%20%5E%7BK%7D%3B%20p%20%3D%20%20%5Cbig%28%201%20-%20%5Cfrac%7B1%7D%7Bm%7D%20%5Cbig%29%5E%7BKn%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0).
+by: ![FPR Formula](http://bit.ly/27sOLmt).
 *K* is number or hash functions, *m* is the size of the filter, *n* is the number of added elements and *p* is probability
 of a field in the filter still being unused after *n* elements have been added.
 It can be seen that with increasing *n*, *p* converges against *0* and therefore
@@ -23,7 +22,7 @@ It can be seen that with increasing *n*, *p* converges against *0* and therefore
 
 *Stable Bloom Filters* continuously "reset" random fields in the filter.
 Deng and Rafiei have shown that by doing this, the *FPR* can be stabilised [1].
-The disadvantage of this approach is that it also introduces false negatives.
+The disadvantage of this approach is that it introduces false negatives.
 
 ## Usage
 
